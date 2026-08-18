@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra Ricardina Rangeiro - Ginecologia &amp; Obstetrícia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211712;
+    --cream:#F6EEE3;
+    --wine:#6E2A38;
+    --wine-deep:#4C1D28;
+    --rose:#DDA9A0;
+    --gold:#B08A4E;
+    --line: rgba(33,23,18,0.14);
+    --max: 1120px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--wine);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:14px; height:1px;
+    background:var(--wine);
+    display:inline-block;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  img{max-width:100%; display:block;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,238,227,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-size:19px; font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand .ring{
+    width:26px; height:26px; border-radius:50%;
+    border:1.5px solid var(--wine);
+    position:relative;
+    overflow:hidden;
+  }
+  .brand .ring img{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:50%;
+  }
+  .nav-links{display:flex; gap:32px; font-size:14.5px; color:var(--ink);}
+  .nav-links a{opacity:0.72; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--wine); color:var(--cream);
+    padding:10px 20px; border-radius:100px;
+    font-size:14px; font-weight:600;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--wine-deep);}
+  @media(max-width:760px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{
+    padding:88px 0 70px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 58px);
+    line-height:1.07;
+    margin:20px 0 22px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--wine);
+  }
+  .hero p.lede{
+    font-size:17.5px;
+    line-height:1.65;
+    color:rgba(33,23,18,0.78);
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .btn-primary{
+    background:var(--wine); color:var(--cream);
+    padding:15px 26px; border-radius:100px;
+    font-weight:600; font-size:15px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .18s ease, background .18s ease;
+    box-shadow:0 8px 24px -8px rgba(110,42,56,0.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:var(--wine-deep);}
+  .btn-secondary{
+    padding:15px 22px; border-radius:100px;
+    border:1px solid var(--line); font-size:15px; font-weight:500;
+    transition:border-color .2s, background .2s;
+  }
+  .btn-secondary:hover{border-color:var(--wine); background:rgba(110,42,56,0.05);}
+  .trust-line{
+    margin-top:28px; font-size:13.5px; color:rgba(33,23,18,0.6);
+    display:flex; align-items:center; gap:10px;
+  }
+  .trust-line .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+
+  /* CYCLE DIAL — signature element */
+  .dial-wrap{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    aspect-ratio:1/1;
+  }
+  .dial-svg{width:100%; max-width:400px; height:auto;}
+  .dial-center{
+    position:absolute; text-align:center;
+  }
+  .dial-center .num{font-family:'Fraunces', serif; font-size:15px; letter-spacing:0.02em;}
+  .dial-center .cap{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.55; margin-top:4px;}
+  .dial-center .photo{
+    width:150px; height:150px; border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--cream);
+    box-shadow:0 10px 30px -8px rgba(33,23,18,0.35);
+  }
+  .dial-ring-path{
+    fill:none; stroke:var(--wine); stroke-width:1.4;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.1s cubic-bezier(.65,0,.35,1) forwards .3s;
+  }
+  .dial-ring-path.secondary{stroke:var(--gold); stroke-width:1; animation-delay:.7s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .dial-dot{fill:var(--wine);}
+  @media(prefers-reduced-motion: reduce){
+    .dial-ring-path{animation:none; stroke-dashoffset:0;}
+  }
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:40px;}
+    .dial-wrap{order:-1; max-width:280px; margin:0 auto;}
+  }
+
+  /* SECTION shared */
+  section{padding:84px 0;}
+  .section-head{max-width:620px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px); margin-top:14px; line-height:1.15;}
+  .section-head p{font-size:16px; color:rgba(33,23,18,0.68); margin-top:14px; line-height:1.6;}
+  .divider{border:none; border-top:1px solid var(--line);}
+
+  /* PILARES */
+  .pilares{background:var(--ink); color:var(--cream);}
+  .pilares .eyebrow{color:var(--rose);}
+  .pilares .eyebrow::before{background:var(--rose);}
+  .pilar-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(246,238,227,0.14);
+    border:1px solid rgba(246,238,227,0.14);
+  }
+  .pilar{
+    background:var(--ink); padding:34px 28px;
+  }
+  .pilar .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gold);
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .pilar h3{font-size:21px; margin:14px 0 10px; font-weight:500;}
+  .pilar p{font-size:14.5px; line-height:1.6; color:rgba(246,238,227,0.68);}
+  @media(max-width:760px){ .pilar-grid{grid-template-columns:1fr;} }
+
+  /* CONTEÚDO / PROVA SOCIAL */
+  .topics{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  }
+  .topic-card{
+    border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px 20px; background:#fff;
+    transition:border-color .2s, transform .2s;
+    overflow:hidden;
+  }
+  .topic-card:hover{border-color:var(--wine); transform:translateY(-3px);}
+  .topic-card .media{
+    width:100%; aspect-ratio:1/1; object-fit:cover;
+    border-radius:9px; margin-bottom:14px;
+    background:var(--rose);
+  }
+  .topic-card h4{padding:0 6px;}
+  .topic-card .ig{padding:0 6px;}
+  .topic-card .ig{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--gold);
+    letter-spacing:0.08em;
+  }
+  .topic-card h4{font-family:'Fraunces', serif; font-size:17px; margin-top:10px; font-weight:500; line-height:1.3;}
+  @media(max-width:760px){ .topics{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .topics{grid-template-columns:1fr;} }
+
+  .stat-strip{
+    display:flex; justify-content:space-between; gap:24px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:34px 0; margin-top:56px; flex-wrap:wrap;
+  }
+  .stat{min-width:140px;}
+  .stat .n{font-family:'Fraunces', serif; font-size:34px; color:var(--wine);}
+  .stat .l{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(33,23,18,0.55); margin-top:6px;}
+
+  /* PROCESSO */
+  .processo{background:var(--rose);}
+  .step-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:1px solid rgba(33,23,18,0.18);
+  }
+  .step{
+    padding:32px 26px; border-right:1px solid rgba(33,23,18,0.18);
+  }
+  .step:last-child{border-right:none;}
+  .step .mark{font-family:'Fraunces', serif; font-size:15px; color:var(--wine-deep); opacity:0.7;}
+  .step h3{font-size:19px; margin:12px 0 8px; font-weight:500;}
+  .step p{font-size:14px; line-height:1.55; color:rgba(33,23,18,0.72);}
+  @media(max-width:760px){
+    .step-row{grid-template-columns:1fr;}
+    .step{border-right:none; border-bottom:1px solid rgba(33,23,18,0.18);}
+  }
+
+  /* FAQ */
+  .faq-item{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+    cursor:pointer;
+  }
+  .faq-q{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:16.5px; font-weight:500; font-family:'Fraunces', serif;
+  }
+  .faq-q .plus{font-size:20px; color:var(--wine); transition:transform .25s;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    font-size:14.5px; line-height:1.6; color:rgba(33,23,18,0.7);
+  }
+  .faq-item.open .faq-a{max-height:200px; margin-top:12px;}
+
+  /* CTA FINAL */
+  .cta-final{
+    background:var(--wine); color:var(--cream); text-align:center;
+    border-radius:28px; padding:64px 32px;
+    margin:0 28px 90px;
+    position:relative; overflow:hidden;
+  }
+  .cta-final::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(246,238,227,0.08), transparent 55%);
+  }
+  .cta-final h2{font-size:clamp(28px,4vw,42px); position:relative;}
+  .cta-final p{max-width:460px; margin:16px auto 30px; font-size:16px; color:rgba(246,238,227,0.8); position:relative;}
+  .cta-final .btn-primary{background:var(--cream); color:var(--wine-deep); position:relative;}
+  .cta-final .btn-primary:hover{background:#fff;}
+
+  footer{
+    padding:36px 0; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:13px; color:rgba(33,23,18,0.55); flex-wrap:wrap; gap:12px;
+  }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="ring"><img src="image/Screenshot_20260817_113818_Instagram.jpg" alt="Dra Ricardina"></span>Dra Ricardina</div>
+    <div class="nav-links">
+      <a href="#pilares">Áreas de cuidado</a>
+      <a href="#conteudo">Conteúdo</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#faq">Perguntas</a>
+    </div>
+    <a class="nav-cta" href="https://instagram.com/draricardinarangeiro" target="_blank" rel="noopener">Marcar consulta</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Ginecologia · Obstetrícia · Ginecologia Oncológica</span>
+      <h1>De mulher para mulheres, <em>sem rodeios</em> sobre o teu corpo.</h1>
+      <p class="lede">A Dra Ricardina Rangeiro descomplica assuntos que muitas consultas deixam por explicar do ciclo hormonal aos sinais de alerta que não devias ignorar. Marca a tua consulta e sai dela com respostas, não com mais dúvidas.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://instagram.com/draricardinarangeiro" target="_blank" rel="noopener">
+          Marcar consulta agora →
+        </a>
+        <a class="btn-secondary" href="#conteudo">Ver conteúdo educativo</a>
+      </div>
+      <div class="trust-line"><span class="dot"></span>Seguida por milhares de mulheres em Moçambique no Instagram</div>
+    </div>
+
+    <div class="dial-wrap">
+      <svg class="dial-svg" viewBox="0 0 400 400">
+        <circle class="dial-ring-path" cx="200" cy="200" r="170"/>
+        <circle class="dial-ring-path secondary" cx="200" cy="200" r="140"/>
+        <circle class="dial-dot" cx="200" cy="30" r="4"/>
+        <circle class="dial-dot" cx="370" cy="200" r="3" opacity="0.6"/>
+        <circle class="dial-dot" cx="200" cy="370" r="3" opacity="0.6"/>
+        <circle class="dial-dot" cx="30" cy="200" r="3" opacity="0.6"/>
+      </svg>
+      <div class="dial-center">
+        <img class="photo" src="image/Screenshot_20260817_113818_Instagram.jpg" alt="Dra Ricardina Rangeiro">
+        <!--<div class="cap" style="margin-top:10px;">@draricardinarangeiro</div>-->
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="pilares" id="pilares">
+  <div class="wrap">
+    <span class="eyebrow">Áreas de cuidado</span>
+    <h2 style="margin-top:14px; font-size:clamp(24px,3vw,34px);">Cuidado clínico onde a maioria das mulheres tem mais perguntas do que respostas.</h2>
+  </div>
+  <div class="pilar-grid" style="margin-top:48px;">
+    <div class="pilar reveal">
+      <span class="tag">Saúde hormonal</span>
+      <h3>Ciclo e equilíbrio hormonal</h3>
+      <p>Irregularidades, sinais de desequilíbrio e o que realmente acontece numa consulta hormonal explicado sem jargão.</p>
+    </div>
+    <div class="pilar reveal">
+      <span class="tag">Prevenção</span>
+      <h3>Ginecologia oncológica</h3>
+      <p>Rastreio, sinais de alerta e as perguntas certas a fazer ao teu ginecologista sobre cancro do ovário e do colo do útero.</p>
+    </div>
+    <div class="pilar reveal">
+      <span class="tag">Acompanhamento</span>
+      <h3>Obstetrícia &amp; gravidez</h3>
+      <p>Acompanhamento pré-natal, actividade física na gravidez e orientação clínica em cada fase.</p>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Prova no feed, não em promessas</span>
+      <h2>Temas que a Dra Ricardina já destrinchou no Instagram</h2>
+      <p>Uma amostra do que encontras a seguir o perfil conteúdo pensado para mulheres que querem entender o próprio corpo antes de entrarem no consultório.</p>
+    </div>
+
+    <div class="topics">
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-1.jpg" alt="">
+        <span class="ig">Post</span><h4>Exames normais. Mas não te sentes bem?</h4>
+      </div>
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-2.jpg" alt="">
+        <span class="ig">Post</span><h4>DIU, pílula ou mioma, causas do sangramento que ninguém explica</h4>
+      </div>
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-3.jpg" alt="">
+        <span class="ig">Post</span><h4>Sangramento pós-menopausa: o guia que toda mulher devia ter</h4>
+      </div>
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-4.jpg" alt="">
+        <span class="ig">Post</span><h4>O que aumenta o risco de cancro do ovário?</h4>
+      </div>
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-5.jpg" alt="">
+        <span class="ig">Post</span><h4>5 perguntas que deves fazer ao teu ginecologista sobre cancro do ovário</h4>
+      </div>
+      <div class="topic-card reveal">
+        <img class="media" src="img/post-6.jpg" alt="">
+        <span class="ig">Post</span><h4>4 sinais de desequilíbrio hormonal que não deves ignorar</h4>
+      </div>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="n">4,2K+</div><div class="l">Mulheres a seguir no Instagram</div></div>
+      <div class="stat"><div class="n">87</div><div class="l">Conteúdos educativos publicados</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">De mulher para mulheres</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="processo" id="processo">
+  <div class="wrap">
+    <span class="eyebrow">Como funciona</span>
+    <h2 style="margin-top:14px; font-size:clamp(24px,3vw,34px);">Do Instagram à consulta, em três passos</h2>
+  </div>
+  <div class="step-row" style="margin-top:48px;">
+    <div class="step reveal">
+      <div class="mark">Passo 1</div>
+      <h3>Envia mensagem</h3>
+      <p>Contacta através do Instagram ou WhatsApp e descreve, em poucas palavras, o motivo da consulta.</p>
+    </div>
+    <div class="step reveal">
+      <div class="mark">Passo 2</div>
+      <h3>Confirma horário</h3>
+      <p>Recebes as opções de data e local disponíveis e escolhes o que funciona melhor para ti.</p>
+    </div>
+    <div class="step reveal">
+      <div class="mark">Passo 3</div>
+      <h3>Vais à consulta</h3>
+      <p>Sais com um plano claro — sem termos técnicos por explicar nem perguntas por responder.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:760px;">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <h2 style="margin-top:14px; font-size:clamp(24px,3vw,32px); margin-bottom:36px;">Antes de marcares</h2>
+
+    <div class="faq-item">
+      <div class="faq-q"><span>Preciso de referência médica para marcar consulta?</span><span class="plus">+</span></div>
+      <div class="faq-a">Não. Podes marcar directamente através do Instagram ou WhatsApp, sem necessidade de referência prévia.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>A consulta é presencial?</span><span class="plus">+</span></div>
+      <div class="faq-a">Sim, as consultas são presenciais. Os detalhes de local e horário são confirmados na marcação.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>Posso marcar consulta de acompanhamento pré-natal?</span><span class="plus">+</span></div>
+      <div class="faq-a">Sim, o acompanhamento obstétrico está entre as áreas de cuidado disponíveis.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>Como acompanho conteúdo educativo antes de marcar?</span><span class="plus">+</span></div>
+      <div class="faq-a">Segue @draricardinarangeiro no Instagram o feed reúne explicações regulares sobre saúde hormonal, prevenção oncológica e obstetrícia.</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final reveal">
+  <h2>O teu corpo não devia ser um mistério.</h2>
+  <p>Marca a tua consulta com a Dra Ricardina Rangeiro e leva as tuas perguntas a alguém preparada para as responder de verdade.</p>
+  <a class="btn-primary" href="https://instagram.com/draricardinarangeiro" target="_blank" rel="noopener">Marcar consulta no Instagram →</a>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>© Dra Ricardina Rangeiro - Ginecologista e Obstetra</span>
+    <span>@draricardinarangeiro</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
